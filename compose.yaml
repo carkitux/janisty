@@ -1,0 +1,13 @@
+﻿services:
+  janisty:
+    image: janisty
+    build:
+      context: .
+      dockerfile: janisty/janisty/Dockerfile
+
+  janisty.client:
+    image: janisty.client
+    build:
+      context: .
+      dockerfile: janisty/janisty.Client/Dockerfile
+

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "janisty", "janisty\janisty\janisty.csproj", "{73D1D203-E791-4CB0-8846-4910E384CAA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "janisty.Client", "janisty\janisty.Client\janisty.Client.csproj", "{4FC0AF64-C8AD-485D-81EB-1A4A64E3189F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5B5F67E9-6293-4060-92C7-6A85262080E6}"
+	ProjectSection(SolutionItems) = preProject
+		compose.yaml = compose.yaml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73D1D203-E791-4CB0-8846-4910E384CAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D1D203-E791-4CB0-8846-4910E384CAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D1D203-E791-4CB0-8846-4910E384CAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D1D203-E791-4CB0-8846-4910E384CAA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FC0AF64-C8AD-485D-81EB-1A4A64E3189F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FC0AF64-C8AD-485D-81EB-1A4A64E3189F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FC0AF64-C8AD-485D-81EB-1A4A64E3189F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FC0AF64-C8AD-485D-81EB-1A4A64E3189F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
