@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using janisty.Client.Pages;
 using janisty.Components;
 using janisty.Components.Account;
 using janisty.Data;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using _Imports = janisty.Client._Imports;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,10 +25,19 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
-                       throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var dbHost = builder.Configuration["DB_HOST"] ??
+             throw new InvalidOperationException("Configuration parameter 'DB_HOST' not found.");
+var dbPort = builder.Configuration["DB_PORT"] ??
+             throw new InvalidOperationException("Configuration parameter 'DB_PORT' not found.");
+var dbName = builder.Configuration["DB_NAME"] ??
+             throw new InvalidOperationException("Configuration parameter 'DB_NAME' not found.");
+var dbUser = builder.Configuration["DB_USER"] ??
+             throw new InvalidOperationException("Configuration parameter 'DB_USER' not found.");
+var dbPassword = builder.Configuration["DB_PASSWORD"] ??
+                 throw new InvalidOperationException("Configuration parameter 'DB_PASSWORD' not found.");
+var connectionString = $"Host={dbHost};Port={dbPort};Database={dbName};Username={dbUser};Password={dbPassword}";
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseNpgsql(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options =>
@@ -52,7 +61,7 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
+    app.UseExceptionHandler("/Error", true);
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
@@ -66,7 +75,7 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(janisty.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(typeof(_Imports).Assembly);
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
